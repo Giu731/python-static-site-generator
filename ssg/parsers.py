@@ -1,3 +1,5 @@
+import shutil
+
 from typing import List
 from pathlib import Path
 
@@ -12,5 +14,13 @@ class Parser:
         raise NotImplementedError
 
     def read(self, path):
-        with open(self.path) as file:
-            return file.read(file)
+        with open(path, "r") as file:
+            return file.read()
+
+    def write(self, path, dest, content, ext=".html"):
+        full_path = dest/path.with_suffix(ext).name
+        with open(full_path, "w") as file:
+            return file.write(content)
+
+    def copy(self, path, source, dest):
+        correct = shutil.copy2(path, dest/source)
