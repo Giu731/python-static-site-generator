@@ -28,5 +28,4 @@ class Content(Mapping):
     def type(self, type):
         self.data["type"] = type
 
-    __getitem__(key):
-        return self.data[key]
+    
